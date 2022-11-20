@@ -1,0 +1,10 @@
+.t1{
+    width: 100%;
+    height: 30vh;
+    break-after: always;
+}
+
+.t2{
+    width: 100%;
+    /* align-items: center; */
+}
