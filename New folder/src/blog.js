@@ -14,6 +14,7 @@ const Products = () => {
 
   const handleSubmit = () => {
      axios.post("http://localhost:5000/product/add" , {
+      // use regex for if user type any special character then give a space 
       body: body.split(/[!"`'#%&,:;<>=@{}~\$\(\)\*\+\/\\\?\[\]\^\|]+/),
       title:title.split(/[!"`'#%&,:;<>=@{}~\$\(\)\*\+\/\\\?\[\]\^\|]+/)
      }).then(res => {
@@ -36,7 +37,7 @@ const Products = () => {
             setTitle(e.target.value)
         }}
         value={title}></textarea>
-        <textarea autoComplete="off" className="t1" 
+        <textarea autoComplete="on" className="t1" 
         onChange={(e) => {
                     setBody(e.target.value)
                 }}
@@ -46,20 +47,8 @@ const Products = () => {
         </section>
         
       </div>
-    // </Wrapper>
   );
   }
-// const Wrapper = styled.section`
-//   .textarea{
-//     width:100%;
-//     height:30%
-//   }
 
-//   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-//     .grid-filter-column {
-//       grid-template-columns: 1fr;
-//     }
-//   }
-// `;
 
 export default Products;

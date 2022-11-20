@@ -7,7 +7,8 @@ import { Link , useNavigate } from 'react-router-dom'
 import GetProducts from "./components/GetProducts";
 import {UserContext} from "./App"
 import { useContext } from "react";
-
+import { Button } from "./styles/Button";
+ import { Container } from "./styles/Container";
 const Home = () => {
   const {state,dispatch} = useContext(UserContext)
   const data = {
@@ -32,13 +33,15 @@ const Home = () => {
     <>
       <HeroSection myData={data} />
       {/* <FeatureProduct /> */}
-        <div className="coin" >
-        
-          <Link to='/products'><button className="coin">+</button></Link>
+        {/* <div className="coin" > */}
+        <Container>
+
+          <Link to='/products'><Button>+</Button></Link>
+        </Container>
         
         
 
-</div>
+
       <GetProducts/>
       <Services />
       <Trusted />

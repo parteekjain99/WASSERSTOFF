@@ -4,8 +4,7 @@ import About from "./About";
 import Home from "./Home";
 import Products from "./blog";
 import Contact from "./Contact";
-// import Cart from "./Cart";
-// import SingleProduct from "./SingleProduct";
+
 import ErrorPage from "./ErrorPage";
 import { GlobalStyle } from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
@@ -13,7 +12,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Signup from "./Signup";
 import Signin from "./Login";
-// import Logout from "./Logout";
+
 import { initialState,reducer } from "./reducer/UseReducer";
 import Edit from "./components/Edit";
 
@@ -26,7 +25,7 @@ const App = () => {
 
 
 
-
+// theme
   const theme = {
     colors: {
       heading: "rgb(24 24 29)",
@@ -72,9 +71,6 @@ const App = () => {
           <Route path="/signup" element={<Signup/>} />
           <Route path="/signin" element={<Signin/>}/>
           <Route path='/get/:id' element={<Edit/>}/>
-          {/* <Route path="/singleproduct/:id" element={<SingleProduct />} /> */}
-          {/* <Route path="/cart" element={<Cart />} /> */}
-          {/* <Route path="/logout"  element={<Logout/>}/> */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

@@ -3,8 +3,8 @@ const UserModel = require('../Model/user')
 const BlogModel = require("../Model/blogModel")
 const jwt = require("jsonwebtoken")
 
-
-module.exports.signup = (req, res) => {
+// api for signup
+const signup = (req, res) => {
     console.log(req.body)
 
     // email should not exist alreday
@@ -22,34 +22,8 @@ module.exports.signup = (req, res) => {
 
 }
 
-// module.exports.signin = (req, res) => {
-//     console.log(req.body.email)
-
-//     // email and password match
-
-//     UserModel.findOne({ email: req.body.email })
-//         .then(result => {
-//             console.log(result, '11')
-
-//             // match password with req.body.password
-//             if (result.password !== req.body.password) {
-//                 res.send({ code: 404, message: 'password wrong' })
-//             } else {
-//                 res.send({
-//                     email: result.email,
-//                     code: 200,
-//                     message: 'user Found',
-//                     token: 'hfgdhg'
-//                 })
-//             }
-
-//         })
-//         .catch(err => {
-//             res.send({ code: 500, message: 'user not found' })
-//         })
-
-
-module.exports.loginUser = async function (req, res) {
+// api for login use jsonwebtoken for verification
+ const loginUser = async function (req, res) {
             try {
                 
                 let userName = req.body.email;
@@ -78,114 +52,19 @@ module.exports.loginUser = async function (req, res) {
            }
            };
 
-    // newUser.save().then(() => {
-    //     res.send({ code: 200, message: 'Signup success' })
-    // }).catch((err) => {
-    //     res.send({ code: 500, message: 'Signup Err' })
-    // })
-
-// }
-
-// module.exports.sendotp = async (req, res) => {
-//     console.log(req.body)
-//     const _otp = Math.floor(100000 + Math.random() * 900000)
-//     console.log(_otp)
-//     let user = await UserModel.findOne({ email: req.body.email })
-//     // send to user mail
-//     if (!user) {
-//         res.send({ code: 500, message: 'user not found' })
-//     }
-
-//     let testAccount = await nodemailer.createTestAccount()
-
-//     let transporter = nodemailer.createTransport({
-//         host: "smtp.ethereal.email",
-//         port: 587,
-//         secure: false,
-//         auth: {
-//             user: testAccount.user,
-//             pass: testAccount.pass
-//         }
-//     })
 
 
-
-//     let info = await transporter.sendMail({
-//         from: 'naimuddin540@gmail.com',
-//         to: req.body.email, // list of receivers
-//         subject: "OTP", // Subject line
-//         text: String(_otp),
-//         html: `<html>
-//             < body >
-//             Hello and welcome
-//         </ >
-//        </html > `,
-//     })
-
-//     if (info.messageId) {
-
-//         console.log(info, 84)
-//         UserModel.updateOne({ email: req.body.email }, { otp: _otp })
-//             .then(result => {
-//                 res.send({ code: 200, message: 'otp send' })
-//             })
-//             .catch(err => {
-//                 res.send({ code: 500, message: 'Server err' })
-
-//             })
-
-//     } else {
-//         res.send({ code: 500, message: 'Server err' })
-//     }
-// }
-
-
-// module.exports.submitotp = (req, res) => {
-//     console.log(req.body)
-
-
-//     UserModel.findOne({ otp: req.body.otp }).then(result => {
-
-//         //  update the password 
-
-//         UserModel.updateOne({ email: result.email }, { password: req.body.password })
-//             .then(result => {
-//                 res.send({ code: 200, message: 'Password updated' })
-//             })
-//             .catch(err => {
-//                 res.send({ code: 500, message: 'Server err' })
-
-//             })
-
-
-//     }).catch(err => {
-//         res.send({ code: 500, message: 'otp is wrong' })
-
-//     })
-
-
-// }
-
-
-module.exports.logout = (req,res) => {
+// api for logout inwhich i clear the cookie
+ const logout = (req,res) => {
     console.log("hello my logout page")
-    
-    res.status(200).send("user logout")
+   
+    res.clearCookie('jwt').send();("user logout")
 }
 
-// (req, res){
-//     cookie = req.cookies;
-//     for (var prop in cookie) {
-//         if (!cookie.hasOwnProperty(prop)) {
-//             continue;
-//         }    
-//         res.cookie(prop, '', {expires: new Date(0)});
-//     }
-//     res.redirect('/');
-// });
 
 
-module.exports.add = async (req,res) => {
+// post api for adding title and body
+ const add = async (req,res) => {
           let data = req.body 
           let {body ,title  } = data
         //   let dataofbody = await blogModel.find({body})
@@ -207,15 +86,15 @@ module.exports.add = async (req,res) => {
   
 }
 
-
-module.exports.get = async (req,res) => {
+// api for fetching data
+ const get = async (req,res) => {
     // const data = req.body
    const getController = await BlogModel.find({})
    res.status(200).json(getController)
 }
 
-
-module.exports.updateOrderDetail = async function(req, res) {
+// for updation
+ const updateOrderDetail = async function(req, res) {
     try {
         let data = req.body;
         // const userId = req.params.id
@@ -234,3 +113,7 @@ module.exports.updateOrderDetail = async function(req, res) {
         res.status(500).send({ status: false, Message: error.message })
     }
 }
+
+
+
+module.exports = {signup,add,updateOrderDetail,logout,get,loginUser}

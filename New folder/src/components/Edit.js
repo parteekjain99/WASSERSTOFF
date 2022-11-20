@@ -1,29 +1,21 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import {  useParams } from "react-router-dom";
-
-
-
-
-
 import axios from "axios";
 import { useState } from "react";
-// import "./blog.css";
 import { useNavigate } from "react-router-dom";
-// import FilterSection from "./components/FilterSection";
-// import ProductList from "./components/ProductList";
-// import Sort from "./components/Sort";
-            // import { useFilterContext } from "./context/filter_context";
-            // import { NavLink } from "react-router-dom";
-            const Edit = () => {
+            
+
+
+
+const Edit = () => {
                 const [title, setTitle] = useState("");
                 const [body, setBody] = useState("");
-                // const { id } = useParams();
+               
                 const { id } = useParams();
                 const navigate = useNavigate()
                 
                 
                 const handleSubmit = () => {
+                  
                     axios.put(`http://localhost:5000/get/${id}` ,{
                         title:title,
                         body,body
@@ -38,7 +30,7 @@ import { useNavigate } from "react-router-dom";
 
 
   return (
-    // <Wrapper>
+   
       <div className="container">
 
         <section className="section">
@@ -57,20 +49,9 @@ import { useNavigate } from "react-router-dom";
         </section>
         
       </div>
-    // </Wrapper>
+   
   );
   }
-// const Wrapper = styled.section`
-//   .textarea{
-//     width:100%;
-//     height:30%
-//   }
 
-//   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-//     .grid-filter-column {
-//       grid-template-columns: 1fr;
-//     }
-//   }
-// `;
 
 export default Edit;
