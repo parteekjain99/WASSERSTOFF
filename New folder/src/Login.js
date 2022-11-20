@@ -2,6 +2,10 @@ import { useContext,  useState } from "react"
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import {UserContext} from "./App"
+import {Container} from "./styles/Container"
+import {Button} from "./styles/Button"
+
+
 
 function Signin() {
 
@@ -41,10 +45,11 @@ function Signin() {
     }
 
     return (<>
+        <Container  style={{  display: 'block',  alignContent:"center" , marginLeft:"100px" }}>
+
         <h1 className="center"> SIGNIN </h1>
-        <div className="outcard">
             Email
-            <input
+            <input style={{   marginLeft:"17px" }}
                 onChange={(e) => {
                     setEmail(e.target.value)
                 }}
@@ -58,16 +63,17 @@ function Signin() {
                 }}
                 value={password}
                 className="inputs" type="password" /> <br /> <br />
-            <button
+            <Button
                 onClick={handleSubmit}
                 className="btns" 
-                 > 
-                     SUBMIT </button>
-            <Link style={{ textAlign: 'center', display: 'block', marginTop: '5px' }}
+                > 
+                     SUBMIT </Button>
+            <Link style={{ display: 'block', marginTop: '5px' }}
                 to={'/signup'}> SIGN UP </Link>
-            <Link style={{ textAlign: 'center', display: 'block', marginTop: '5px' }}
+            <Link style={{  display: 'block', marginTop: '5px' }}
                 to={'/forget-pass'}> Forget Password </Link>
-        </div>
+       
+                </Container>
     </>
     )
 }

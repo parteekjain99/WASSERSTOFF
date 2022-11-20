@@ -42,7 +42,7 @@ const handleSubmit = () => {
                        <div className="main">
                          <h3 >{user.title} :{user.percentage}</h3>
                         
-                         <h4  className="box" style={{backgroundColor: 'red' }}>{user.body}</h4>
+                         
                        </div>
                      </div>
                      

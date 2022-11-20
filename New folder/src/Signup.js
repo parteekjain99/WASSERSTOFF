@@ -1,7 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
 import { Link } from 'react-router-dom'
-
+import {Container} from "./styles/Container"
+import { Button} from "./styles/Button"
 function Signup() {
 
     const [email, setEmail] = useState('')
@@ -27,29 +28,31 @@ function Signup() {
     }
 
     return (<>
+       <Container style={{  display: 'block',  alignContent:"center" , marginLeft:"100px" }}>
         <h1 className="center"> SIGNUP </h1>
-        <div className="outcard">
-            Email
-            <input
+           <br/>
+            Email: 
+            <input style={{  marginLeft:"18px" }}
                 onChange={(e) => {
                     setEmail(e.target.value)
                 }}
                 value={email}
                 className="inputs"
                 type="email" /> <br /> <br />
-            Password
+            Password : 
             <input
                 onChange={(e) => {
                     setPassword(e.target.value)
                 }}
                 value={password}
                 className="inputs" type="password" /> <br /> <br />
-            <button
+            <Button
                 onClick={handleSubmit}
-                className="btns"> SUBMIT </button>
-            <Link style={{ textAlign: 'center', display: 'block', marginTop: '5px' }}
+                className="btns"> SUBMIT </Button>
+            <Link style={{  display: 'block', marginTop: '5px' }}
                 to={'/signin'}> SIGN IN </Link>
-        </div>
+        
+                </Container>
     </>
     )
 }
