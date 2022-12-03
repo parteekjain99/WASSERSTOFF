@@ -12,7 +12,7 @@ import { Button } from "./styles/Button";
 const Home = () => {
   const {state,dispatch} = useContext(UserContext)
   const data = {
-    name: "Wasserstoff ",
+    name: "ASSIGNMENT ",
   };
 
 
