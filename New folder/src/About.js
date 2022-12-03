@@ -5,7 +5,7 @@ const About = () => {
 
 
   const data = {
-    name: "Wasserstoff ",
+    name: "ASSIGNMENT ",
   };
 
   return (
